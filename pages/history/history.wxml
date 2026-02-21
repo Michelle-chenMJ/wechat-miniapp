@@ -1,0 +1,69 @@
+<!-- 历史记录页 -->
+<view class="container">
+
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <text class="page-title">打卡记录</text>
+    <text class="page-subtitle">见证每一天的成长</text>
+  </view>
+
+  <!-- 统计概览 -->
+  <view class="card summary-card">
+    <view class="summary-title">坚持的力量 💪</view>
+    <view class="summary-stats">
+      <view class="summary-item">
+        <text class="summary-number text-primary">{{totalDays}}</text>
+        <text class="summary-label">累计打卡</text>
+      </view>
+      <view class="summary-item">
+        <text class="summary-number text-success">{{consecutiveDays}}</text>
+        <text class="summary-label">连续天数</text>
+      </view>
+      <view class="summary-item">
+        <text class="summary-number text-warning">{{totalMinutes}}</text>
+        <text class="summary-label">总时长(分钟)</text>
+      </view>
+    </view>
+
+    <!-- 成就展示 -->
+    <view class="achievements" wx:if="{{achievements.length > 0}}">
+      <view class="achievement-item" wx:for="{{achievements}}" wx:key="*this">
+        {{item}}
+      </view>
+    </view>
+  </view>
+
+  <!-- 记录列表 -->
+  <view class="records-section">
+    <view class="section-title">历史记录</view>
+
+    <view class="record-card" wx:for="{{records}}" wx:key="id" bindtap="viewDetail" data-record="{{item}}">
+      <view class="record-header">
+        <view class="record-date">{{item.date}}</view>
+        <view class="record-type">{{item.type}}</view>
+      </view>
+
+      <view class="record-content">
+        <view class="record-text">{{item.content}}</view>
+        <view class="record-duration">⏱ {{item.duration}} 分钟</view>
+      </view>
+
+      <view class="record-media" wx:if="{{item.media.length > 0}}">
+        <image class="media-thumb" src="{{item.media[0]}}" mode="aspectFill"></image>
+        <view class="media-count" wx:if="{{item.media.length > 1}}">+{{item.media.length - 1}}</view>
+      </view>
+
+      <view class="teacher-comment" wx:if="{{item.reflection}}">
+        <text class="comment-label">心得体会：</text>
+        <text class="comment-text">{{item.reflection}}</text>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{records.length === 0}}">
+      <text class="empty-icon">📝</text>
+      <text class="empty-text">还没有打卡记录</text>
+      <text class="empty-hint">开始你的第一次打卡吧！</text>
+    </view>
+  </view>
+
+</view>

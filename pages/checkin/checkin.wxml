@@ -1,0 +1,84 @@
+<!-- 打卡详情页 -->
+<view class="container">
+
+  <view class="page-title">记录今天的努力 ✨</view>
+
+  <!-- 打卡类型 -->
+  <view class="card">
+    <view class="form-label">打卡类型</view>
+    <view class="type-list">
+      <view class="type-item {{selectedType === item ? 'active' : ''}}"
+            wx:for="{{types}}"
+            wx:key="*this"
+            bindtap="selectType"
+            data-type="{{item}}">
+        {{item}}
+      </view>
+    </view>
+    <input class="input-field custom-type"
+           placeholder="或输入自定义类型"
+           value="{{customType}}"
+           bindinput="onCustomTypeInput"/>
+    <view class="suggestions" wx:if="{{showSuggestions}}">
+      <view class="suggestion-item"
+            wx:for="{{suggestions}}"
+            wx:key="*this"
+            bindtap="selectSuggestion"
+            data-type="{{item}}">
+        {{item}}
+      </view>
+    </view>
+  </view>
+
+  <!-- 上传照片 -->
+  <view class="card">
+    <view class="form-label">上传照片/视频</view>
+    <view class="upload-area">
+      <view class="image-item" wx:for="{{images}}" wx:key="index">
+        <image src="{{item}}" mode="aspectFill"></image>
+        <view class="delete-btn" bindtap="deleteImage" data-index="{{index}}">×</view>
+      </view>
+      <view class="upload-btn" bindtap="chooseImage" wx:if="{{images.length < 3}}">
+        <text>+</text>
+        <text class="upload-text">添加照片</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 时长 -->
+  <view class="card">
+    <view class="form-label">练习时长（分钟）</view>
+    <input class="input-field duration-input"
+           type="number"
+           placeholder="请输入时长"
+           value="{{duration}}"
+           bindinput="onDurationInput"/>
+  </view>
+
+  <!-- 内容 -->
+  <view class="card">
+    <view class="form-label">今天做了什么</view>
+    <textarea class="textarea-field"
+              placeholder="例如：练了哈农、599、某首曲子..."
+              value="{{content}}"
+              bindinput="onContentInput"
+              maxlength="200"/>
+    <view class="char-count">{{content.length}}/200</view>
+  </view>
+
+  <!-- 心得体会 -->
+  <view class="card">
+    <view class="form-label">心得体会（可选）</view>
+    <textarea class="textarea-field"
+              placeholder="记录今天的感受和收获..."
+              value="{{reflection}}"
+              bindinput="onReflectionInput"
+              maxlength="200"/>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="btn-primary submit-btn" bindtap="submitCheckin">
+    完成打卡
+  </view>
+
+</view>

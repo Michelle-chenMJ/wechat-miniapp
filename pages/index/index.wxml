@@ -1,0 +1,78 @@
+<!-- 首页 - 打卡页面 -->
+<view class="container">
+
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <text class="page-title">培养习惯打卡</text>
+    <text class="page-subtitle">每一次坚持，都值得被记录</text>
+    <view class="page-header-btns">
+      <view class="manage-type-btn" bindtap="manageTypes">管理类型</view>
+      <view class="clear-data-btn" bindtap="clearData">清空数据</view>
+    </view>
+  </view>
+
+  <!-- 统计卡片 -->
+  <view class="card stats-card">
+    <!-- 类型筛选 -->
+    <view class="type-filter">
+      <view class="type-filter-item {{selectedType === item ? 'active' : ''}}"
+            wx:for="{{types}}"
+            wx:key="*this"
+            bindtap="selectType"
+            data-type="{{item}}">
+        {{item}}
+      </view>
+    </view>
+
+    <view class="stats-row">
+      <view class="stat-item">
+        <text class="stat-number text-primary">{{consecutiveDays}}</text>
+        <text class="stat-label">连续打卡</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number text-success">{{maxDays}}</text>
+        <text class="stat-label">最长记录</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number text-warning">{{totalDays}}</text>
+        <text class="stat-label">累计天数</text>
+      </view>
+    </view>
+    <view class="stats-row weekly-stats">
+      <view class="stat-item">
+        <text class="stat-number text-primary">{{weeklyHours}}</text>
+        <text class="stat-label">本周时长(小时)</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 打卡按钮 -->
+  <view class="checkin-section">
+    <view class="date-text">{{todayDate}}</view>
+    <view class="btn-primary checkin-btn" bindtap="goToCheckin">
+      <text>今日打卡 ✨</text>
+    </view>
+  </view>
+
+  <!-- 打卡日历 -->
+  <view class="card calendar-card">
+    <view class="calendar-header">
+      <text class="calendar-title">打卡日历</text>
+      <view class="month-selector">
+        <text bindtap="prevMonth">‹</text>
+        <text class="current-month">{{currentMonth}}</text>
+        <text bindtap="nextMonth">›</text>
+      </view>
+    </view>
+
+    <view class="calendar-grid">
+      <view class="weekday" wx:for="{{weekdays}}" wx:key="*this">{{item}}</view>
+      <view class="calendar-day {{item.checked ? 'checked' : ''}} {{item.isToday ? 'today' : ''}}"
+            wx:for="{{calendarDays}}"
+            wx:key="index">
+        <text wx:if="{{item.day}}">{{item.day}}</text>
+      </view>
+    </view>
+  </view>
+
+</view>

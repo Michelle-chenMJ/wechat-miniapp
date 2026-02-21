@@ -1,0 +1,73 @@
+/* 全局样式 - 北欧冷淡风 */
+page {
+  background-image: url('/images/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  color: #333333;
+  font-size: 32rpx; /* 全局字体加大 */
+}
+
+/* 容器 */
+.container {
+  min-height: 100vh;
+  padding: 40rpx;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, rgba(232, 244, 248, 0.85) 0%, rgba(245, 245, 245, 0.9) 60%, rgba(255, 255, 255, 0.95) 100%);
+}
+
+/* 卡片样式 */
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10rpx);
+}
+
+/* 大按钮 */
+.btn-primary {
+  background: linear-gradient(135deg, #87CEEB 0%, #4A90E2 100%);
+  color: #FFFFFF;
+  border-radius: 50rpx;
+  padding: 35rpx;
+  font-size: 40rpx; /* 按钮字体加大 */
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 8rpx 24rpx rgba(135, 206, 235, 0.3);
+}
+
+/* 文字大小 */
+.text-large {
+  font-size: 42rpx; /* 加大 */
+  font-weight: bold;
+}
+
+.text-medium {
+  font-size: 36rpx; /* 加大 */
+}
+
+.text-normal {
+  font-size: 32rpx; /* 加大 */
+}
+
+.text-small {
+  font-size: 28rpx; /* 加大 */
+  color: #999999;
+}
+
+/* 颜色 */
+.text-primary {
+  color: #87CEEB;
+}
+
+.text-success {
+  color: #9ACD32;
+}
+
+.text-warning {
+  color: #FFD700;
+} 
